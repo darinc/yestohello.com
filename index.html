@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yes to Hello! - Be friendly AND efficient</title>
+    <meta name="description" content="Say hello AND get to the point. You don't have to choose between being polite and being productive.">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yestohello.com/">
+    <meta property="og:title" content="Yes to Hello! - Be friendly AND efficient">
+    <meta property="og:description" content="Say hello AND get to the point. You don't have to choose between being polite and being productive.">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yestohello.com/">
+    <meta property="twitter:title" content="Yes to Hello! - Be friendly AND efficient">
+    <meta property="twitter:description" content="Say hello AND get to the point. You don't have to choose between being polite and being productive.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #10b981;
+            --primary-dark: #059669;
+            --bg: #ffffff;
+            --text: #1f2937;
+            --text-light: #6b7280;
+            --border: #e5e7eb;
+            --code-bg: #f3f4f6;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            color: var(--text);
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin: 1.5rem 0 0.75rem;
+            color: var(--text);
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .intro {
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        .comparison {
+            display: grid;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .comparison-box {
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 2px solid var(--border);
+        }
+
+        .comparison-box.bad {
+            background: #fef2f2;
+            border-color: #fca5a5;
+        }
+
+        .comparison-box.good {
+            background: #ecfdf5;
+            border-color: var(--primary);
+        }
+
+        .comparison-label {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: block;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .bad .comparison-label {
+            color: #dc2626;
+        }
+
+        .good .comparison-label {
+            color: var(--primary-dark);
+        }
+
+        .message {
+            background: white;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            margin: 0.5rem 0;
+            box-shadow: 0 1px 3px var(--shadow);
+        }
+
+        .message.you {
+            background: #3b82f6;
+            color: white;
+            margin-left: 20%;
+        }
+
+        .message.them {
+            background: #e5e7eb;
+            color: var(--text);
+            margin-right: 20%;
+        }
+
+        .message-meta {
+            font-size: 0.75rem;
+            opacity: 0.7;
+            margin-top: 0.25rem;
+        }
+
+        .waiting {
+            text-align: center;
+            color: var(--text-light);
+            font-style: italic;
+            margin: 0.5rem 0;
+            font-size: 0.875rem;
+        }
+
+        .benefits {
+            margin: 2rem 0;
+        }
+
+        .benefit {
+            margin: 1rem 0;
+            padding-left: 0.5rem;
+        }
+
+        .benefit::before {
+            content: '';
+            display: inline-block;
+            margin-right: 0.5rem;
+        }
+
+        code {
+            background: var(--code-bg);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-family: 'Monaco', 'Courier New', monospace;
+        }
+
+        pre {
+            background: var(--code-bg);
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        .thread-example {
+            background: var(--code-bg);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .thread-message {
+            margin: 0.5rem 0;
+        }
+
+        .thread-reply {
+            margin-left: 1.5rem;
+            padding-left: 1rem;
+            border-left: 3px solid var(--primary);
+            color: var(--text-light);
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border-left: 4px solid var(--primary);
+        }
+
+        .highlight strong {
+            color: var(--primary-dark);
+        }
+
+        footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.875rem;
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1.125rem;
+            }
+
+            .container {
+                padding: 20px 10px;
+            }
+
+            .message.you,
+            .message.them {
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Yes to Hello! 👋</h1>
+        <p class="subtitle">Be friendly AND efficient - you can do both!</p>
+
+        <div class="intro">
+            <strong>You don't have to choose between being polite and being productive.</strong> Just put your greeting and your question in the same message.
+        </div>
+
+        <h2>Here's the thing:</h2>
+        <p>Saying "hello" is great! Small talk is fine! Being human in digital conversations matters.</p>
+        <p><strong>The problem isn't the greeting - it's the waiting.</strong></p>
+
+        <div class="comparison">
+            <div class="comparison-box bad">
+                <span class="comparison-label">❌ Instead of this:</span>
+                <div class="message you">
+                    <div>Hi!</div>
+                </div>
+                <div class="waiting">[notification sent, they check their phone]</div>
+                <div class="waiting">[waiting for response...]</div>
+                <div class="message them">
+                    <div>Hey, what's up?</div>
+                </div>
+                <div class="waiting">[another notification, they check again]</div>
+                <div class="waiting">[waiting...]</div>
+                <div class="message you">
+                    <div>Can you review my PR when you get a chance?</div>
+                </div>
+            </div>
+
+            <div class="comparison-box good">
+                <span class="comparison-label">✅ Try this:</span>
+                <div class="message you">
+                    <div>Hi! Can you review my PR when you get a chance?</div>
+                    <div style="margin-top: 0.5rem;">It's the authentication refactor - no rush, but would love your thoughts before EOD if possible.</div>
+                </div>
+            </div>
+        </div>
+
+        <h2>Why this is better:</h2>
+        <div class="benefits">
+            <p class="benefit">✨ <strong>Still friendly</strong> - You greeted them! You were polite!</p>
+            <p class="benefit">⏰ <strong>Respects their time</strong> - One notification instead of three. They can respond when ready.</p>
+            <p class="benefit">🎯 <strong>Actually helpful</strong> - They have context and can give you a real answer right away.</p>
+            <p class="benefit">💭 <strong>Reduces anxiety</strong> - No one's left wondering "what do they want?" or "should I wait to respond?"</p>
+        </div>
+
+        <div class="highlight">
+            <h3 style="margin-top: 0;">The idea:</h3>
+            <p><strong>Greeting + context in the first message = considerate communication</strong></p>
+            <p style="margin-bottom: 0;">Say hello! Ask how their day is going! Just include what you need help with too.</p>
+        </div>
+
+        <p><strong>It's not rude to get to the point - it's respectful of everyone's time and attention.</strong></p>
+
+        <h2>But I like to write out my thoughts in multiple messages...</h2>
+        <p>That's totally fine! Just make sure your <strong>first message includes both the greeting AND the core request</strong>. Then use threads for follow-up details, additional context, or corrections.</p>
+
+        <p><strong>Example:</strong></p>
+        <div class="thread-example">
+            <div class="thread-message">
+                <strong>First message:</strong> "Hey! Quick question about the deploy process - I'm getting a weird error in production"
+            </div>
+            <div style="margin: 1rem 0; color: var(--text-light);">Thread replies with your follow-ups:</div>
+            <div class="thread-reply">↳ "It only happens on the EU servers"</div>
+            <div class="thread-reply">↳ "Error code is 502"</div>
+            <div class="thread-reply">↳ "Started about an hour ago"</div>
+        </div>
+
+        <p><strong>This way:</strong></p>
+        <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+            <li>The person knows what you need from the very first notification</li>
+            <li>Your additional details don't spam the main channel</li>
+            <li>Everything stays organized and easy to follow</li>
+            <li>Others can see the full context without scrolling through unrelated messages</li>
+        </ul>
+
+        <p style="background: var(--code-bg); padding: 1rem; border-radius: 8px; margin: 1rem 0;"><strong>Pro tip:</strong> If your chat app doesn't support threads, type out all your thoughts first, then send them in quick succession so they arrive as a group.</p>
+
+        <footer>
+            <p>Inspired by <a href="https://nohello.net" target="_blank" rel="noopener">nohello.net</a> and the "don't ask to ask" principle, but friendlier.</p>
+            <p style="margin-top: 1rem;">Yes to being human. Yes to being efficient. <strong>Yes to hello.</strong> 😊</p>
+            <p style="margin-top: 1.5rem; font-size: 0.75rem;">
+                <a href="https://github.com/darinc/yestohello.com" target="_blank" rel="noopener">View source on GitHub</a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
