@@ -3,20 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yes to Hello! - Be friendly AND efficient</title>
-    <meta name="description" content="Say hello AND get to the point. You don't have to choose between being polite and being productive.">
 
-    <!-- Open Graph / Social Media -->
+    <!-- Primary Meta Tags -->
+    <title>Yes to Hello! - Be friendly AND efficient</title>
+    <meta name="title" content="Yes to Hello! - Be friendly AND efficient">
+    <meta name="description" content="Say hello AND get to the point. You don't have to choose between being polite and being productive. Greeting + context = considerate communication.">
+    <meta name="keywords" content="communication, productivity, chat etiquette, messaging, workplace communication, async communication, remote work, nohello, yes to hello">
+    <meta name="author" content="Yes to Hello">
+    <link rel="canonical" href="https://yestohello.com/">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#10b981">
+    <meta name="msapplication-TileColor" content="#10b981">
+
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://yestohello.com/">
     <meta property="og:title" content="Yes to Hello! - Be friendly AND efficient">
     <meta property="og:description" content="Say hello AND get to the point. You don't have to choose between being polite and being productive.">
+    <meta property="og:image" content="https://yestohello.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Yes to Hello!">
+    <meta property="og:locale" content="en_US">
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://yestohello.com/">
-    <meta property="twitter:title" content="Yes to Hello! - Be friendly AND efficient">
-    <meta property="twitter:description" content="Say hello AND get to the point. You don't have to choose between being polite and being productive.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://yestohello.com/">
+    <meta name="twitter:title" content="Yes to Hello! - Be friendly AND efficient">
+    <meta name="twitter:description" content="Say hello AND get to the point. You don't have to choose between being polite and being productive.">
+    <meta name="twitter:image" content="https://yestohello.com/og-image.png">
+
+    <!-- Structured Data / Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Yes to Hello!",
+      "url": "https://yestohello.com/",
+      "description": "Be friendly AND efficient - you can do both! Say hello AND get to the point.",
+      "author": {
+        "@type": "Organization",
+        "name": "Yes to Hello"
+      },
+      "inLanguage": "en-US",
+      "keywords": "communication, productivity, chat etiquette, messaging, workplace communication"
+    }
+    </script>
 
     <style>
         * {
@@ -259,6 +299,53 @@
                 margin-right: 0;
             }
         }
+
+        .share-button {
+            display: inline-block;
+            margin: 1rem 0;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .share-button:hover {
+            background: var(--primary-dark);
+        }
+
+        .copy-notification {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px var(--shadow);
+            animation: slideIn 0.3s ease;
+        }
+
+        .copy-notification.show {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 <body>
@@ -341,6 +428,10 @@
 
         <p style="background: var(--code-bg); padding: 1rem; border-radius: 8px; margin: 1rem 0;"><strong>Pro tip:</strong> If your chat app doesn't support threads, type out all your thoughts first, then send them in quick succession so they arrive as a group.</p>
 
+        <div style="text-align: center; margin: 3rem 0;">
+            <button class="share-button" onclick="shareOrCopy()">Share This Page</button>
+        </div>
+
         <footer>
             <p>Inspired by <a href="https://nohello.net" target="_blank" rel="noopener">nohello.net</a> and the "don't ask to ask" principle, but friendlier.</p>
             <p style="margin-top: 1rem;">Yes to being human. Yes to being efficient. <strong>Yes to hello.</strong> 😊</p>
@@ -349,5 +440,54 @@
             </p>
         </footer>
     </div>
+
+    <div id="copyNotification" class="copy-notification">
+        ✓ Link copied to clipboard!
+    </div>
+
+    <script>
+        function shareOrCopy() {
+            const url = 'https://yestohello.com/';
+            const title = 'Yes to Hello!';
+            const text = 'Be friendly AND efficient - you can do both! Say hello AND get to the point.';
+
+            if (navigator.share) {
+                navigator.share({
+                    title: title,
+                    text: text,
+                    url: url
+                }).catch(() => {
+                    copyToClipboard(url);
+                });
+            } else {
+                copyToClipboard(url);
+            }
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                showNotification();
+            }).catch(() => {
+                // Fallback for older browsers
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                showNotification();
+            });
+        }
+
+        function showNotification() {
+            const notification = document.getElementById('copyNotification');
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+    </script>
 </body>
 </html>
