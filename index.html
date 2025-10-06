@@ -167,24 +167,55 @@
             color: var(--primary-dark);
         }
 
+        .message-container {
+            display: flex;
+            align-items: flex-start;
+            margin: 0.5rem 0;
+            gap: 0.75rem;
+        }
+
+        .message-container.you {
+            flex-direction: row-reverse;
+        }
+
+        .avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.75rem;
+        }
+
+        .avatar.you {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .avatar.them {
+            background: #6b7280;
+            color: white;
+        }
+
         .message {
             background: white;
             padding: 0.75rem 1rem;
             border-radius: 8px;
-            margin: 0.5rem 0;
             box-shadow: 0 1px 3px var(--shadow);
+            max-width: 70%;
         }
 
         .message.you {
             background: #3b82f6;
             color: white;
-            margin-left: 20%;
         }
 
         .message.them {
             background: #e5e7eb;
             color: var(--text);
-            margin-right: 20%;
         }
 
         .message-meta {
@@ -293,10 +324,14 @@
                 padding: 20px 10px;
             }
 
-            .message.you,
-            .message.them {
-                margin-left: 0;
-                margin-right: 0;
+            .message {
+                max-width: 85%;
+            }
+
+            .avatar {
+                width: 40px;
+                height: 40px;
+                font-size: 0.7rem;
             }
         }
 
@@ -364,26 +399,38 @@
         <div class="comparison">
             <div class="comparison-box bad">
                 <span class="comparison-label">❌ Instead of this:</span>
-                <div class="message you">
-                    <div>Hi!</div>
+                <div class="message-container you">
+                    <div class="avatar you">YOU</div>
+                    <div class="message you">
+                        <div>Hi!</div>
+                    </div>
                 </div>
                 <div class="waiting">[notification sent, they check their phone]</div>
                 <div class="waiting">[waiting for response...]</div>
-                <div class="message them">
-                    <div>Hey, what's up?</div>
+                <div class="message-container them">
+                    <div class="avatar them">THEM</div>
+                    <div class="message them">
+                        <div>Hey, what's up?</div>
+                    </div>
                 </div>
                 <div class="waiting">[another notification, they check again]</div>
                 <div class="waiting">[waiting...]</div>
-                <div class="message you">
-                    <div>Can you review my PR when you get a chance?</div>
+                <div class="message-container you">
+                    <div class="avatar you">YOU</div>
+                    <div class="message you">
+                        <div>Can you review my PR when you get a chance?</div>
+                    </div>
                 </div>
             </div>
 
             <div class="comparison-box good">
                 <span class="comparison-label">✅ Try this:</span>
-                <div class="message you">
-                    <div>Hi! Can you review my PR when you get a chance?</div>
-                    <div style="margin-top: 0.5rem;">It's the authentication refactor - no rush, but would love your thoughts before EOD if possible.</div>
+                <div class="message-container you">
+                    <div class="avatar you">YOU</div>
+                    <div class="message you">
+                        <div>Hi! Can you review my PR when you get a chance?</div>
+                        <div style="margin-top: 0.5rem;">It's the authentication refactor - no rush, but would love your thoughts before EOD if possible.</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -393,24 +440,43 @@
             <p class="benefit">✨ <strong>Still friendly</strong> - You greeted them! You were polite!</p>
             <p class="benefit">⏰ <strong>Respects their time</strong> - One notification instead of three. They can respond when ready.</p>
             <p class="benefit">🎯 <strong>Actually helpful</strong> - They have context and can give you a real answer right away.</p>
+            <p class="benefit">📅 <strong>Sets clear expectations</strong> - They know if it's urgent or can wait, helping them prioritize their response.</p>
             <p class="benefit">💭 <strong>Reduces anxiety</strong> - No one's left wondering "what do they want?" or "should I wait to respond?"</p>
         </div>
 
         <div class="highlight">
             <h3 style="margin-top: 0;">The idea:</h3>
-            <p><strong>Greeting + context in the first message = considerate communication</strong></p>
-            <p style="margin-bottom: 0;">Say hello! Ask how their day is going! Just include what you need help with too.</p>
+            <p><strong>Greeting + context + timing = considerate communication</strong></p>
+            <p>Say hello! Include what you need help with. And answer the unasked question: "By when?"</p>
+            <p style="margin-bottom: 0;">Even a simple "no rush" or "when you get a chance" helps people prioritize.</p>
         </div>
+
+        <h2>What makes a complete message?</h2>
+        <p>Let's break down that perfect message:</p>
+        <div style="background: var(--code-bg); padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0;">
+            <p style="margin-bottom: 1rem;"><strong>1. The greeting:</strong> "Hi!" → <em>Be human</em></p>
+            <p style="margin-bottom: 1rem;"><strong>2. The request:</strong> "Can you review my PR?" → <em>Be clear</em></p>
+            <p style="margin-bottom: 1rem;"><strong>3. The context:</strong> "It's the authentication refactor" → <em>Be specific</em></p>
+            <p style="margin-bottom: 0;"><strong>4. The timeline:</strong> "No rush, but would love your thoughts before EOD if possible" → <em>Be considerate</em></p>
+        </div>
+        <p>That last part is crucial! Including timing expectations answers the unasked "By when?" question. Whether it's:</p>
+        <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+            <li>"when you get a chance" (low priority)</li>
+            <li>"by EOD if possible" (today, but flexible)</li>
+            <li>"urgent - customer is waiting" (drop everything)</li>
+            <li>"no rush" (truly whenever)</li>
+        </ul>
+        <p>This helps the recipient manage their time and reduces the need for follow-up messages about urgency.</p>
 
         <p><strong>It's not rude to get to the point - it's respectful of everyone's time and attention.</strong></p>
 
-        <h2>But I like to write out my thoughts in multiple messages...</h2>
+        <h2>But I usually write multiple messages...</h2>
         <p>That's totally fine! Just make sure your <strong>first message includes both the greeting AND the core request</strong>. Then use threads for follow-up details, additional context, or corrections.</p>
 
         <p><strong>Example:</strong></p>
         <div class="thread-example">
             <div class="thread-message">
-                <strong>First message:</strong> "Hey! Quick question about the deploy process - I'm getting a weird error in production"
+                <strong>First message:</strong> "Hey! Quick question about the deploy process - I'm getting a weird error in production (need to deploy by 3pm)"
             </div>
             <div style="margin: 1rem 0; color: var(--text-light);">Thread replies with your follow-ups:</div>
             <div class="thread-reply">↳ "It only happens on the EU servers"</div>
